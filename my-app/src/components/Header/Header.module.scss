@@ -1,0 +1,56 @@
+@import '../../scss/_variables.scss';
+.container{
+    background-image: url('../../assets/img/Ellipse-1.svg');
+    max-width: 1440px;
+    height: 466px;
+    margin: 0 auto;
+    padding-top: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .content_bock{
+        display: flex;
+        gap: 21px;
+    }
+    .logo{
+        width: 152px;
+        height: 33px;
+    }
+    .img_block{
+        width: 326px;
+    }
+    .title_block{
+        max-width: 437px;
+        height: 195px;
+        padding-top: 46px;
+        display: flex;
+        flex-direction: column;
+        align-items:left;
+        justify-content: space-between;
+        gap: 52px;
+        .title{
+            color: #FFF;
+            font-family: $mainFontFamily;
+            font-size: $mainFontSize*3.125;
+            font-style: normal;
+            font-weight: 800;
+            line-height: 120%;
+            span{
+                color: #FF5C00;
+                font-family: $mainFontFamily;
+                font-size: $mainFontSize*3.125;
+                font-style: normal;
+                font-weight: 800;
+                line-height: 120%;
+            }
+        }
+        .subtitle{
+            color: #FFF;
+            font-family: $mainFontFamily;
+            font-size: $mainFontSize;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+    }
+}

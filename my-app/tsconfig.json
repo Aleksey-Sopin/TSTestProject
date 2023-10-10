@@ -20,7 +20,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": [
-    "src"
-  ]
+  // для обрадотки типов тскрипт
+  "include": ["src", "/src/@typess"]
 }

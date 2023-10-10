@@ -1,0 +1,77 @@
+@import '../../scss/_variables.scss';
+.footer{
+    width: 100%;
+    background-color: #fff;
+    &__list{
+        display: flex;
+        justify-content: space-between;
+    }
+    &__item_1{
+        img{
+            max-width: 300px;
+            height: 58px;
+            margin-bottom: 59px;
+        } 
+    }
+}
+.container_footer{
+    width: 1440px;
+    height: 244px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 52px 211px 40px 75px;
+}
+.title{
+    color: $mainColorText;
+    font-family: $mainFontFamily;
+    font-size: $mainFontSize*1.5;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%; 
+    margin-bottom: 25px;
+}
+.phone_block{
+    display: flex;
+}
+.phone_number{
+    color: $mainColorText;
+    font-family: $mainFontFamily;
+    font-size: $mainFontSize;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%; 
+}
+.phone_icon{
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+    background-image: url('../../assets/img/footer/Call.svg');
+}
+.copy{
+    max-width: 130px;
+    color: $mainColorText;
+    font-family: $mainFontFamily;
+    font-size: $mainFontSize*0.75;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 170%;
+}
+.icon_block{
+    width: 200px;
+    height: 50px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 16px;
+}
+.insta_icon{
+    width: 50px;
+    height: 50px;
+    background-image: url('../../assets/img/footer/teleg.png');
+    background-size: cover;
+}
+.telegram_icon{
+   width: 50px;
+    height: 50px;
+    background-image: url('../../assets/img/footer/instagram.png');
+    background-size: cover;
+}
