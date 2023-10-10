@@ -1,6 +1,6 @@
 import Categories from '../components/Categories';
 import Cart from '../components/Cart';
-import ContentPage from '../components/ContentPage';
+import ContentPage from '../components/MainContent/ContentPage';
 
 type Props = {}
 

@@ -1,0 +1,86 @@
+let arr = [
+    {
+        "id": "0",
+        "scrUrl": "./products/photo.png",
+        "price": "123",
+        "description": "Важкий Удар",
+        "weight": "470"
+    },
+    {
+        "id": "1",
+        "scrUrl": "./products/photo-1.png",
+        "price": "264",
+        "description": "Супер Сирний",
+        "weight": "512"
+    },
+    {
+        "id": "2",
+        "scrUrl": "./products/photo-2.png",
+        "price": "350",
+        "description": "Безмежна класика",
+        "weight": "450"
+    },
+    {
+        "id": "3",
+        "scrUrl": "./products/photo-3.png",
+        "price": "326",
+        "description": "Насичений",
+        "weight": "580"
+    },
+    {
+        "id": "4",
+        "scrUrl": "./products/photo-4.png",
+        "price": "275",
+        "description": "Італійський",
+        "weight": "510"
+    },
+    {
+        "id": "5",
+        "scrUrl": "./products/photo-5.png",
+        "price": "415",
+        "description": "М'ясна вибухівка",
+        "weight": "330"
+    },
+    {
+        "id": "6",
+        "scrUrl": "./products/photo-6.png",
+        "price": "150",
+        "description": "Начьос",
+        "weight": "220"
+    },
+    {
+        "id": "7",
+        "scrUrl": "./products/photo-7.png",
+        "price": "180",
+        "description": "Пекучий хот-дог",
+        "weight": "245"
+    },
+    {
+        "id": "8",
+        "scrUrl": "./products/photo-8.png",
+        "price": "175",
+        "description": "Домашній хот-дог",
+        "weight": "250"
+    },
+    {
+        "id": "9",
+        "scrUrl": "./products/photo-9.png",
+        "price": "168",
+        "description": "Класичний хот-дог",
+        "weight": "215"
+    },
+    {
+        "id": "10",
+        "scrUrl": "./products/photo-10.png",
+        "price": "155",
+        "description": "Картопля волі",
+        "weight": "180"
+    },
+    {
+        "id": "11",
+        "scrUrl": "./products/photo-11.png",
+        "price": "140",
+        "description": "Кільця цибульки",
+        "weight": "160"
+    }
+]
