@@ -14,7 +14,8 @@ const index:React.FC = (props: Props) => {
         </div>
 
         <ul className={styles.list}>
-          <li className={styles.item}>
+          {}
+          {/* <li className={styles.item}>
             <div className={styles.product_block}>
               <img src="products/photo-1.png" alt="product" />
               <div className={styles.product_descr}>
@@ -24,18 +25,7 @@ const index:React.FC = (props: Props) => {
               </div>
             </div>
             <div className={styles.item_count}> <span>-</span> <p>1</p> <span>+</span> </div>
-          </li>
-          <li className={styles.item}>
-            <div className={styles.product_block}>
-              <img src="products/photo-4.png" alt="product" />
-              <div className={styles.product_descr}>
-                <div className={styles.product_title}>Картопля волі</div>
-                <div className={styles.product_weight}>180 gramm</div>
-                <div className={styles.product_price}>245 ₴</div>
-              </div>
-            </div>
-            <div className={styles.item_count}> <span>-</span> <p>4</p> <span>+</span> </div>
-          </li>
+          </li> */}
 
         </ul>
 

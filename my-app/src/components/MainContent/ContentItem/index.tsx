@@ -8,9 +8,12 @@ type ContentItemType = {
     price: string;
     description: string;
     weight: string;
+    // handleClick: ()=> void;
   }
 
 const index: React.FC <ContentItemType> = ({scrUrl, price, description, weight}) => {
+
+  
   return (
     <li className={styles.item}>
         <div className={styles.product_block}>
@@ -21,7 +24,7 @@ const index: React.FC <ContentItemType> = ({scrUrl, price, description, weight})
                 <div className={styles.product_weight}>{weight} gramm</div>
             </div>
         </div>
-        <button className={styles.content_button}>Додати</button>
+        <button   className={styles.content_button}>Додати</button>
     </li>
   )
 }
