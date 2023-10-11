@@ -3,15 +3,15 @@ import styles from './contentItem.module.scss';
 import React from 'react'
 
 type ContentItemType = {
-    id: Number;
+    id: number;
     scrUrl: string;
     price: string;
     description: string;
     weight: string;
-    // handleClick: ()=> void;
+    handleClickAdd: (id:number) => void;
   }
 
-const index: React.FC <ContentItemType> = ({scrUrl, price, description, weight}) => {
+const index: React.FC <ContentItemType> = ({id, scrUrl, price, description, weight, handleClickAdd}) => {
 
   
   return (
@@ -24,7 +24,7 @@ const index: React.FC <ContentItemType> = ({scrUrl, price, description, weight})
                 <div className={styles.product_weight}>{weight} gramm</div>
             </div>
         </div>
-        <button   className={styles.content_button}>Додати</button>
+        <button onClick={() => handleClickAdd(id)}  className={styles.content_button}>Додати</button>
     </li>
   )
 }

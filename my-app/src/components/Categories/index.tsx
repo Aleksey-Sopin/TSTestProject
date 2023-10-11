@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import styles from './categories.module.scss';
 
-// type Props = {}
-
 type CategoriesProps = {
   value: number;
   onChangeCategory: (idx: number) => void;

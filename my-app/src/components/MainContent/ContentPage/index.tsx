@@ -1,51 +1,28 @@
 import axios from 'axios';
 import ContentItem from '../ContentItem/index';
 import styles from './contentPage.module.scss';
-import { useNavigate } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-type ContentItemType = {
-  id: Number;
+type ContentPageType = {
+  id: number;
   scrUrl: string;
   price: string;
   description: string;
   weight: string;
+  // handleClickAdd: (id:number) => void;
 }
 type PropsType = {
-  products: ContentItemType[]
+  products: ContentPageType[];
+  handleClickAdd: (id:number) => void;
 }
-
-
-
-const ContentPage:React.FC<PropsType>= ({products}) => {
-  // const [products, setProducts] = useState<ContentItemType[]>();
-
-  // const navigate = useNavigate();
-
-  const handleClick = () => {
-
-  }
-
-  // useEffect(() => {
-  //   async function fetchCategories() {
-  //     try {
-  //       const {data} = await axios.get<ContentItemType[]>(`https://650702eb3a38daf4803efe01.mockapi.io/products?search=1`);
-  //       setProducts(data);
-  //     } catch (error) {
-  //       navigate('/');
-  //     }
-  //   }
-  //   fetchCategories();
-  // }, []);
-  
-  // if(!products){
-  //   return <>Загрузка...</>;
-  // }
+const ContentPage:React.FC<PropsType>= ({products, handleClickAdd}) => {
 
   return (
     <div className={styles.container_content_page}>
       <ul className={styles.list}>
-      {products.map((obj:ContentItemType) => <ContentItem key={obj.scrUrl} {...obj}/>)}
+
+      {products.map((obj:ContentPageType) => <ContentItem key={obj.scrUrl} handleClickAdd={(id)=>handleClickAdd(id)} {...obj}/> )}
+
       </ul>
     </div>
   )

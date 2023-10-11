@@ -1,8 +1,39 @@
-import React from 'react'
-import styles from './cart.module.scss';
-type Props = {}
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-const index:React.FC = (props: Props) => {
+import styles from './cart.module.scss';
+
+type ContentItemType = {
+  id: number;
+  scrUrl: string;
+  price: string;
+  description: string;
+  weight: string;
+}
+type PropsType = {
+  productId: number;
+}
+const Index:React.FC<PropsType> = ({productId}) => {
+
+  const [item, setItem] = useState<ContentItemType[]>();
+  const navigate = useNavigate();
+
+  const Cartitems:ContentItemType[] = [];
+
+  useEffect(()=>{
+    async function fetchCategories() {
+      try {
+        const {data} = await axios.get<ContentItemType[]>(`https://650702eb3a38daf4803efe01.mockapi.io/products?id=${productId}`);
+        Cartitems.push(...data);
+        setItem(Cartitems)
+      } catch (error) {
+        navigate('/');
+      }
+    }
+    fetchCategories();
+  },[productId])
+
   return (
     <div className={styles.container__cart}>
 
@@ -14,19 +45,21 @@ const index:React.FC = (props: Props) => {
         </div>
 
         <ul className={styles.list}>
-          {}
-          {/* <li className={styles.item}>
-            <div className={styles.product_block}>
-              <img src="products/photo-1.png" alt="product" />
-              <div className={styles.product_descr}>
-                <div className={styles.product_title}>Супер сирний</div>
-                <div className={styles.product_weight}>512 gramm</div>
-                <div className={styles.product_price}>451 ₴</div>
-              </div>
-            </div>
-            <div className={styles.item_count}> <span>-</span> <p>1</p> <span>+</span> </div>
-          </li> */}
 
+          {item?.map((cartItem) => (
+            
+            <li key={cartItem.scrUrl} className={styles.item}>
+              <div className={styles.product_block}>
+                <img src="products/photo-1.png" alt="product" />
+                <div className={styles.product_descr}>
+                  <div className={styles.product_title}>{cartItem.description}</div>
+                  <div className={styles.product_weight}>{cartItem.weight} gramm</div>
+                  <div className={styles.product_price}>{cartItem.price} ₴</div>
+                </div>
+              </div>
+              <div className={styles.item_count}> <span>-</span> <p>1</p> <span>+</span> </div>
+            </li> 
+          ))}
         </ul>
 
         <div className={styles.summ_block}>
@@ -44,4 +77,4 @@ const index:React.FC = (props: Props) => {
   )
 }
 
-export default index
+export default Index

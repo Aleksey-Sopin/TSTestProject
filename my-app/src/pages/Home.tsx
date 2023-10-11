@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 type ContentItemType = {
-  id: Number;
+  id: number;
   scrUrl: string;
   price: string;
   description: string;
@@ -16,11 +16,9 @@ type ContentItemType = {
 export default function Home() {
   const [categoryId, setCategoryId] = useState(0)
   const [products, setProducts] = useState<ContentItemType[]>();
-
+  const [productId, setProductId] = useState(0)
   const navigate = useNavigate();
   const categ = categoryId + 1;
- 
-  
 
   useEffect(() => {
     async function fetchCategories() {
@@ -32,25 +30,23 @@ export default function Home() {
       }
     }
     fetchCategories();
-  }, [categoryId]);
+  }, [categoryId,productId]);
 
   if(!products){
     return <>Загрузка...</>;
   }
+
+  
   return (
       <> 
         <Categories value={categoryId} onChangeCategory={(id) => setCategoryId(id)} />
 
         <div className="content">
-          <Cart />
+          <Cart productId={productId}/>
 
-          <ContentPage products={products} />
+        <ContentPage  products={products} handleClickAdd={(id) => setProductId(id)}/>
 
         </div>
       </>     
   )
-}
-
-function dispatch(arg0: void) {
-  throw new Error('Function not implemented.');
 }
