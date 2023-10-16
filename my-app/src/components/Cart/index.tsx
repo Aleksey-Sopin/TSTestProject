@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { nanoid } from 'nanoid';
 
 import styles from './cart.module.scss';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { selectCart } from '../../redux/cart/selectors';
 
 type ContentItemType = {
   id: number;
@@ -14,26 +16,16 @@ type ContentItemType = {
 type PropsType = {
   productId: number;
 }
-const Index:React.FC<PropsType> = ({productId}) => {
-
-  const [item, setItem] = useState<ContentItemType[]>();
+const Index:React.FC<PropsType> = () => {
   const navigate = useNavigate();
 
-  const Cartitems:ContentItemType[] = [];
+  const { totalPrice, items } = useSelector(selectCart);
 
-  useEffect(()=>{
-    async function fetchCategories() {
-      try {
-        const {data} = await axios.get<ContentItemType[]>(`https://650702eb3a38daf4803efe01.mockapi.io/products?id=${productId}`);
-        Cartitems.push(...data);
-        setItem(Cartitems)
-      } catch (error) {
-        navigate('/');
-      }
-    }
-    fetchCategories();
-  },[productId])
+  const totalCount = items.reduce((sum: number, item: any) => sum + item.count, 0);
 
+  if (!totalPrice) {
+    return <>Cart is empty</>;
+  }
   return (
     <div className={styles.container__cart}>
 
@@ -41,16 +33,17 @@ const Index:React.FC<PropsType> = ({productId}) => {
           <div className={styles.title}>
             Корзина
           </div>
-          <div className={styles.count}>0</div>
+          <div className={styles.count}>{totalCount}</div>
         </div>
 
         <ul className={styles.list}>
 
-          {item?.map((cartItem) => (
+          {items?.map((cartItem) => (
             
-            <li key={cartItem.scrUrl} className={styles.item}>
+            <li key={nanoid()} className={styles.item}>
+
               <div className={styles.product_block}>
-                <img src="products/photo-1.png" alt="product" />
+                <img src={cartItem.scrUrl} alt="product" />
                 <div className={styles.product_descr}>
                   <div className={styles.product_title}>{cartItem.description}</div>
                   <div className={styles.product_weight}>{cartItem.weight} gramm</div>
@@ -77,4 +70,5 @@ const Index:React.FC<PropsType> = ({productId}) => {
   )
 }
 
-export default Index
+
+export default Index;

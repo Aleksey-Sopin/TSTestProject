@@ -1,3 +1,6 @@
+import { useDispatch } from 'react-redux';
+import { addItem } from '../../../redux/cart/slice';
+import { CartItem } from '../../../redux/cart/types';
 import styles from './contentItem.module.scss';
 
 import React from 'react'
@@ -5,14 +8,27 @@ import React from 'react'
 type ContentItemType = {
     id: number;
     scrUrl: string;
-    price: string;
+    price: number;
     description: string;
     weight: string;
-    handleClickAdd: (id:number) => void;
+    count: number;
   }
 
-const index: React.FC <ContentItemType> = ({id, scrUrl, price, description, weight, handleClickAdd}) => {
+const Index: React.FC<ContentItemType> = ({id, scrUrl, price, description, weight}) => {
+ 
+  const dispatch = useDispatch();
 
+  const onClickAdd = () => {
+    const item: CartItem = {
+      id,
+      price,
+      scrUrl,
+      description,
+      weight,
+      count: 0,
+    };
+    dispatch(addItem(item));
+  };
   
   return (
     <li className={styles.item}>
@@ -24,9 +40,9 @@ const index: React.FC <ContentItemType> = ({id, scrUrl, price, description, weig
                 <div className={styles.product_weight}>{weight} gramm</div>
             </div>
         </div>
-        <button onClick={() => handleClickAdd(id)}  className={styles.content_button}>Додати</button>
+        <button onClick={onClickAdd}  className={styles.content_button}>Додати</button>
     </li>
   )
 }
 
-export default index;
+export default Index;
