@@ -4,6 +4,8 @@ import ContentPage from '../components/MainContent/ContentPage';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCart } from '../redux/cart/selectors';
 
 type ContentItemType = {
   id: number;
@@ -15,6 +17,8 @@ type ContentItemType = {
 }
 
 export default function Home() {
+  const dispatch = useDispatch();
+  const { totalPrice, items } = useSelector(selectCart);
   const [categoryId, setCategoryId] = useState(0)
   const [products, setProducts] = useState<ContentItemType[]>();
 
@@ -38,7 +42,6 @@ export default function Home() {
     return <>Загрузка...</>;
   }
 
-  
   return (
       <> 
         <Categories value={categoryId} onChangeCategory={(id) => setCategoryId(id)} />
@@ -47,7 +50,7 @@ export default function Home() {
 
           <Cart productId={productId}/>
 
-          <ContentPage  products={products} handleClickAdd={(id) => setProductId(id)}/>
+          <ContentPage  products={products} />
 
         </div>
       </>     

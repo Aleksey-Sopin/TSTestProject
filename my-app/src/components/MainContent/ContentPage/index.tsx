@@ -12,9 +12,8 @@ type ContentPageType = {
 }
 type PropsType = {
   products: ContentPageType[];
-  handleClickAdd: (id:number) => void;
 }
-const ContentPage:React.FC<PropsType>= ({products, handleClickAdd}) => {
+const ContentPage:React.FC<PropsType>= ({products}) => {
   
   return (
     <div className={styles.container_content_page}>

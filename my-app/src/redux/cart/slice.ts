@@ -23,26 +23,21 @@ const cartSlice = createSlice({
 
       state.totalPrice = calcTotalPrice(state.items);
     },
-    // minusItem(state, action: PayloadAction<string>) {
-    //   const findItem = state.items.find((obj) => obj.id === action.payload);
+    minusItem(state, action: PayloadAction<number>) {
+      const findItem = state.items.find((obj) => obj.id === action.payload);
 
-    //   if (findItem) {
-    //     findItem.count--;
-    //   }
+      if (findItem) {
+        findItem.count > 1 && findItem.count--;
+      }
 
-    //   state.totalPrice = calcTotalPrice(state.items);
-    // },
-    // removeItem(state, action: PayloadAction<string>) {
-    //   state.items = state.items.filter((obj) => obj.id !== action.payload);
-    //   state.totalPrice = calcTotalPrice(state.items);
-    // },
-    // clearItems(state) {
-    //   state.items = [];
-    //   state.totalPrice = 0;
-    // },
+      state.totalPrice = calcTotalPrice(state.items);
+    },
+    removeItem(state, action: PayloadAction<number>) {
+      state.items = state.items.filter((obj) => obj.id !== action.payload);
+      state.totalPrice = calcTotalPrice(state.items);
+    },
   },
 });
-// removeItem, minusItem, clearItems
-export const { addItem } = cartSlice.actions;
+export const { addItem, removeItem, minusItem } = cartSlice.actions;
 
 export default cartSlice.reducer;
